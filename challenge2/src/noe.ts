@@ -84,17 +84,37 @@ let livingEntity = [
 
 livingEntity.map((entity) => {
   let color: string = entity.color ? "(" + entity.color + ")" : "";
+  let forCat = "";
+  if (entity instanceof Cat) {
+    forCat = meow(entity);
+  }
+
+  let forDog = "";
+  if (entity instanceof Cat) {
+    forDog = bark(entity);
+  }
+
+  let forBird = "";
+  if (entity instanceof Cat) {
+    forBird = fly(entity);
+  }
+
+  let for4paws = "";
+  if (entity instanceof Animal4Paws) {
+    for4paws = petAnimal4Paws(entity);
+  }
+
+  let isBlackAnimal = "";
+  if (entity instanceof Animal) {
+    isBlackAnimal = feedAllBlackAnimals(entity);
+  }
+
   console.log(
-    `
-  ${entity.name} ${color} ${photographAllAnimal(entity)} ${
+    `${entity.name} ${color} ${
       entity instanceof Animal ? "je suis un animal" : ""
-    }
-  ${entity instanceof Cat ? meow(entity) : ""} 
-  ${entity instanceof Dog ? bark(entity) : ""} 
-  ${entity instanceof Bird ? fly(entity) : ""}
-  ${entity instanceof Fish ? swim(entity) : ""}
-  ${entity instanceof Animal4Paws ? petAnimal4Paws(entity) : ""}
-  ${entity instanceof Animal ? feedAllBlackAnimals(entity) : ""}
+    } ${photographAllAnimal(
+      entity
+    )} ${forCat} ${forDog} ${forBird} ${for4paws} ${isBlackAnimal}
 `
   );
 });
